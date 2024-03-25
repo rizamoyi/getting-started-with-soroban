@@ -19,9 +19,13 @@ Current value: <strong id="current-value" aria-live="polite">???</strong><br />
     const tx = await incrementor.increment();
     const { result } = await tx.signAndSend();
 
+    const value = incrementor.get_value();
+    console.log(value);
+
+
     // Only use `innerHTML` with contract values you trust!
     // Blindly using values from an untrusted contract opens your users to script injection attacks!
-    currentValue.innerHTML = result;
+    currentValue.innerHTML = value;
 
     button.disabled = false;
     button.classList.remove("loading");
